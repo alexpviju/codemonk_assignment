@@ -40,3 +40,12 @@ class LoginSerializer(serializers.Serializer):
                 }
             }
         raise serializers.ValidationError("Invalid credentials")
+
+
+class ParagraphInputSerializer(serializers.Serializer):
+    text = serializers.CharField()
+
+    def validate_text(self, value):
+        if not value.strip():
+            raise serializers.ValidationError("Text cannot be empty.")
+        return value
