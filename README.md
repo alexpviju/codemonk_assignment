@@ -190,7 +190,7 @@ POST /api/auth/search/
 ---
 
 
-
+**📁 Download Postman Collection: [Paragraph Api.postman_collection.json](https://github.com/alexpviju/codemonk_assignment/blob/main/Paragraph%20Api.postman_collection.json)**
 
 ## 🧑 Author
 
