@@ -69,7 +69,8 @@ DB_PORT=5432
 ```
 
 Update `settings.py` to read from `.env` using `python-decouple`like below.
-``` SECRET_KEY = config("SECRET_KEY")
+```
+SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", default=False, cast=bool)
 
 DATABASES = {
@@ -81,7 +82,8 @@ DATABASES = {
         'HOST': config('DB_HOST', default='localhost'),
         'PORT': config('DB_PORT', default='5432'),
     }
-} ```
+}
+```
 
 ### 5. Run migrations
 ```bash
@@ -139,7 +141,7 @@ POST /api/auth/login/
 
 ---
 
-### 🔹 Upload Paragraphs (Protected)
+### 🔹 Upload Paragraphs seperated by \n\n
 ```http
 POST /api/auth/paragraphs/
 ```
@@ -160,7 +162,7 @@ POST /api/auth/paragraphs/
 
 ---
 
-### 🔹 Search Paragraphs by Word (Protected)
+### 🔹 Search Paragraphs by Word 
 ```http
 POST /api/auth/search/
 ```
@@ -187,37 +189,8 @@ POST /api/auth/search/
 
 ---
 
-## 📘 Documentation
 
-### Swagger UI
-> If using `drf-yasg`:
 
-```
-GET /swagger/ or /docs/
-```
-
-### Postman Collection
-
-A ready-to-use collection is provided in the repository as:
-```
-postman_collection.json
-```
-
----
-
-## ✅ Example Input
-
-```text
-Lorem ipsum dolor sit amet...
-
-Second paragraph text...
-
-Third one here...
-```
-
-Searched word: `lorem` → Returns up to 10 paragraphs containing the word "lorem".
-
----
 
 ## 🧑 Author
 
@@ -235,7 +208,7 @@ Searched word: `lorem` → Returns up to 10 paragraphs containing the word "lore
 - [x] Word Search Endpoint (Top 10)
 - [x] Auth-only access
 - [x] README.md with full usage
-- [x] Postman Collection or Swagger Docs
+- [x] Postman Collection 
 
 ---
 
