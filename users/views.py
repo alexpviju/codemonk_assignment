@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
-from .serializers import RegisterSerializer, LoginSerializer,ParagraphInputSerializer
+from .serializers import RegisterSerializer, LoginSerializer,ParagraphInputSerializer,WordSearchSerializer
 from rest_framework.views import APIView
 from .models import Paragraph,WordIndex
 from rest_framework.permissions import IsAuthenticated
@@ -34,7 +34,6 @@ class ParagraphUploadView(APIView):
                 paragraph = Paragraph.objects.create(text=para_text)
                 created_paragraphs.append(paragraph)
 
-                # Tokenize, clean, lowercase
                 words = para_text.lower().split()
                 for word in words:
                     WordIndex.objects.create(word=word, paragraph=paragraph)
@@ -42,5 +41,29 @@ class ParagraphUploadView(APIView):
             return Response({
                 "message": f"{len(created_paragraphs)} paragraphs indexed successfully."
             }, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class WordSearchView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = WordSearchSerializer(data=request.data)
+        if serializer.is_valid():
+            word = serializer.validated_data['word']
+
+          
+            word_indexes = WordIndex.objects.filter(word=word).select_related('paragraph')[:10] #serches in 10 para
+
+            paragraphs = list({index.paragraph for index in word_indexes}) 
+
+            return Response({
+                "word": word,
+                "results": [
+                    {"id": p.id, "text": p.text}
+                    for p in paragraphs
+                ]
+            })
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
