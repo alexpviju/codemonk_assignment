@@ -180,7 +180,7 @@ POST /api/auth/search/
   "word": "lorem",
   "results": [
     {
-      "id": "para-uuid",
+      "id": "1",
       "text": "The paragraph containing the word 'lorem'."
     }
   ]
