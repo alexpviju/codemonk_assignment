@@ -190,7 +190,6 @@ POST /api/auth/search/
 ---
 
 
-##📁 Download Postman Collection: [postman_collection.json](./postman_collection.json)
 
 
 ## 🧑 Author
