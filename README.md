@@ -198,18 +198,3 @@ POST /api/auth/search/
 **Email**: alex@example.com  
 **Submitted to**: Codemonk Backend Assignment – July 2025
 
----
-
-## ✅ Deliverables Checklist
-
-- [x] Custom User Model with JWT Auth
-- [x] Paragraph & WordIndex Models
-- [x] Upload Paragraph Endpoint
-- [x] Word Search Endpoint (Top 10)
-- [x] Auth-only access
-- [x] README.md with full usage
-- [x] Postman Collection 
-
----
-
-> ✅ Project complete and ready for review.
