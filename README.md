@@ -45,7 +45,12 @@ source venv/bin/activate  # Windows: venv\Scripts\activate
 
 ### 3. Install dependencies
 ```bash
-pip install -r requirements.txt
+pip install django
+pip install djangorestframework
+pip install psycopg2-binary
+pip install python-decouple
+pip install djangorestframework-simplejwt
+pip install drf-yasg
 ```
 
 ### 4. Configure environment
@@ -53,12 +58,30 @@ pip install -r requirements.txt
 Create a `.env` file in the root with the following:
 
 ```env
+SECRET_KEY=your_django_secret_key
 DEBUG=True
-SECRET_KEY=your_secret_key
-DATABASE_URL=postgres://<username>:<password>@localhost:5432/<your_db_name>
+
+DB_NAME=paragraphdb
+DB_USER=postgres
+DB_PASSWORD=Alex@2001
+DB_HOST=localhost
+DB_PORT=5432
 ```
 
-Update `settings.py` to read from `.env` using `python-decouple`.
+Update `settings.py` to read from `.env` using `python-decouple`like below.
+``` SECRET_KEY = config("SECRET_KEY")
+DEBUG = config("DEBUG", default=False, cast=bool)
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='5432'),
+    }
+} ```
 
 ### 5. Run migrations
 ```bash
