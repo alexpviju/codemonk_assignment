@@ -190,11 +190,12 @@ POST /api/auth/search/
 ---
 
 
+##📁 Download Postman Collection: [postman_collection.json](./postman_collection.json)
 
 
 ## 🧑 Author
 
 **Name**: Alex Viju  
 **Email**: alex@example.com  
-**Submitted to**: Codemonk Backend Assignment – July 2025
+**Submitted to**: Codemonk Backend Assignment
 
