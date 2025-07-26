@@ -194,7 +194,7 @@ POST /api/auth/search/
 
 ## 🧑 Author
 
-**Name**: Alex Viju  
-**Email**: alex@example.com  
+**Name**: Alex P V  
+**Email**: alexpviju26@gmail.com  
 **Submitted to**: Codemonk Backend Assignment
 
